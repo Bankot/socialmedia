@@ -15,6 +15,6 @@ router.route("/getAllUsers").get()
 router.route("/getUser").get()
 router.route("/refreshToken").get(refreshToken).delete(deleteRefreshTokens)
 router.route("/protected").get(refreshTokenMiddleware, (req, res) => {
-	return res.send("Hello its protected one!")
+	return res.send(req.accessToken)
 })
 export default router

@@ -47,6 +47,7 @@ const refreshTokenMiddleware = async (
 				let accessToken = signJWT.signAccessToken(decoded._id)
 				if (accessToken) {
 					cookieCreator.addAccessTokenCookie(res, accessToken)
+					req.accessToken = accessToken
 					next()
 				} else {
 					return res.status(401).send("Unauthorized")

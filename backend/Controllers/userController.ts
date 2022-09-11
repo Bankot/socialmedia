@@ -64,6 +64,17 @@ const loginController = async (
 		} else return res.status(400).send("Invalid password!")
 	})
 }
+const changePasswordController = async (
+	req: Request,
+	res: Response,
+	next: NextFunction
+) => {
+	// before running this controller we want to run auth middleware, to make sure that user is authenticated
+	const accessToken = req.accessToken
+	// anyways im gonna make sure it exists, just in case i made any mistakes in refreshTokens middleware
+	if (!accessToken) return res.status(401).send("Unauthorized!")
+	// now let's check if user knows old password and then send a brand new password to the server!
+}
 
 const signupController = async (
 	req: Request,
@@ -98,6 +109,7 @@ const signupController = async (
 		return res.status(400).send(err)
 	}
 }
+
 const refreshToken = async (
 	req: Request,
 	res: Response,

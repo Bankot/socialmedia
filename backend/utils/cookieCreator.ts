@@ -1,4 +1,4 @@
-import { Response, NextFunction } from "express"
+import { Response } from "express"
 
 const addRefreshTokenCookie = (res: Response, token: string) => {
 	res.cookie("refreshToken", token, {
